@@ -73,11 +73,31 @@ public class ImageShower {
                         ioException.printStackTrace();
                     }
 
+                    JLabel lbl = new JLabel();
+                    p2.setImage(img2);
+                    lbl.setIcon(p2);
+
                     final JButton buttonMercedes = new JButton("Mercedes");
                     buttonMercedes.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             firma = "mercedes";
+
+                            BufferedImage finalImg = null;
+                            BufferedImage imgMasina = null, imgCuloare = null;
+                            try {
+                                imgMasina = ImageIO.read(new File("Images\\sigla_mercedes.jpg"));
+                                imgCuloare = ImageIO.read(new File(String.format("Images\\masina_%s.jpg", culoare)));
+                            } catch (IOException ioException) {
+                                ioException.printStackTrace();
+                            }
+                            finalImg = new BufferedImage(imgCuloare.getWidth(), imgCuloare.getHeight(), BufferedImage.TYPE_INT_ARGB);
+
+                            Graphics g = finalImg.getGraphics();
+                            g.drawImage(imgCuloare, 0, 0, null);
+                            g.drawImage(imgMasina, 0, 0, null);
+
+                            lbl.setIcon(new ImageIcon(finalImg));
                         }
                     });
 
@@ -86,6 +106,22 @@ public class ImageShower {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             firma = "audi";
+
+                            BufferedImage finalImg = null;
+                            BufferedImage imgMasina = null, imgCuloare = null;
+                            try {
+                                imgMasina = ImageIO.read(new File("Images\\sigla_audi.jpg"));
+                                imgCuloare = ImageIO.read(new File(String.format("Images\\masina_%s.jpg", culoare)));
+                            } catch (IOException ioException) {
+                                ioException.printStackTrace();
+                            }
+                            finalImg = new BufferedImage(imgCuloare.getWidth(), imgCuloare.getHeight(), BufferedImage.TYPE_INT_ARGB);
+
+                            Graphics g = finalImg.getGraphics();
+                            g.drawImage(imgCuloare, 0, 0, null);
+                            g.drawImage(imgMasina, 0, 0, null);
+
+                            lbl.setIcon(new ImageIcon(finalImg));
                         }
                     });
 
@@ -94,6 +130,22 @@ public class ImageShower {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             firma = "BMW";
+
+                            BufferedImage finalImg = null;
+                            BufferedImage imgMasina = null, imgCuloare = null;
+                            try {
+                                imgMasina = ImageIO.read(new File("Images\\sigla_bmw.jpg"));
+                                imgCuloare = ImageIO.read(new File(String.format("Images\\masina_%s.jpg", culoare)));
+                            } catch (IOException ioException) {
+                                ioException.printStackTrace();
+                            }
+                            finalImg = new BufferedImage(imgCuloare.getWidth(), imgCuloare.getHeight(), BufferedImage.TYPE_INT_ARGB);
+
+                            Graphics g = finalImg.getGraphics();
+                            g.drawImage(imgCuloare, 0, 0, null);
+                            g.drawImage(imgMasina, 0, 0, null);
+
+                            lbl.setIcon(new ImageIcon(finalImg));
                         }
                     });
 
@@ -144,9 +196,6 @@ public class ImageShower {
                             window3.setLocationRelativeTo(null);
                         }
                     });
-                    JLabel lbl = new JLabel();
-                    p2.setImage(img2);
-                    lbl.setIcon(p2);
                     lbl.setPreferredSize(new Dimension(300, 150));
                     JPanel buttons = new JPanel(new GridLayout(0, 1));
 
